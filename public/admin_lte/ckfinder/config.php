@@ -124,7 +124,7 @@ ATTENTION: The trailing slash is required.
 
 */
 
-$baseUrl = 'http://localhost/sandalwood/public/ckfinder_files/';
+$baseUrl = 'https://webtechnomind.in/project/sandalwood/public/ckfinder_files/';
 
 
 

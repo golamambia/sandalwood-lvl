@@ -478,6 +478,23 @@
 .p-80 {
 	padding: 24px 0px;
 }
+.header_rightresponsivebox .btn-primary {
+   
+    padding: 0;
+    text-transform: capitalize;
+    font-size: 0;
+    background-color: transparent;
+}
+.header_rightresponsivebox .btn-primary span {
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 6px;
+    width: 36px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0;
+    box-shadow: none;
+}
 	}
 @media (max-width: 410px){
 .header_area .header_right .phbox a {font-size: 0px;}

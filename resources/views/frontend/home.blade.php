@@ -1,7 +1,7 @@
 @include('frontend.header')
 
 <?php
-$testimonials = get_fields_value_where('gs_testimonial',"status='1'",'rank','asc');
+$location_type = get_fields_value_where('pages',"posttype='location'",'id','desc');
 ?>
 
 <!------ banner area start -------->
@@ -194,9 +194,9 @@ $testimonials = get_fields_value_where('gs_testimonial',"status='1'",'rank','asc
       </div>
       <div class="col-lg-6 col-md-6 Whatwedocontent d-flex flex-wrap align-content-stretch align-items-center">
         <div class="Whatwedo_textbox">
-          <h3>{!!$val->title!!}</h3>
+          <h3>{{strip_tags($val->title)}}</h3>
           {!!$val->body!!}
-           @if($val->btn_text)<a href="{!!$val->btn_url!!}" class="more">{!!$val->btn_text?$val->btn_text:'read more'!!}</a>@endif </div>
+           @if($val->btn_text)<a href="{{url('/service/'.$val->id)}}" class="more">{!!$val->btn_text?$val->btn_text:'read more'!!}</a>@endif </div>
       </div>
     </div>
     @endif
@@ -209,44 +209,46 @@ $testimonials = get_fields_value_where('gs_testimonial',"status='1'",'rank','asc
 
 <div class="clientsay_area p-8">
   <div class="container">
-    <h2>Our <span>Locations</span></h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh. Ut rhoncus metus sollicitudin magna consequat posuere. </p>
-    
+    @foreach($extra_data as $val)
+           @if($val->type==10)
+    <h2>{!!$val->title!!}</h2>
+    <p>{!!$val->sub_title!!}</p>
+     @endif
+             @endforeach
   </div>
   <div class="row m-0">
       
       
         <div class="client_rightbox">
          
-          <div class="owl-carousel client-carousel" id="clientslider">
-            <a href="#">
+          
+           <div class="owl-carousel client-carousel" id="clientslider">
+    @if($location_type->count() > 0)
+ @foreach($location_type as $lt_val)
+ <?php
+$extra_datanw = get_fields_value_where('pages_extra',"page_id=".$lt_val->id,'id','desc');
+?>
+            <a href="{{ url('/') }}/{!!$lt_val->slug!!}">
             <div class="clientbox">
               <div class="locationimg">
-                <img src="{{ asset('frontend') }}/images/Locationsimg.jpg" alt=" ">
-                <h4>Sandalwood Valley</h4>
+                 @foreach($extra_datanw as $val)
+            @if($val->type==1 && ($val->image))
+            <img src="{{ asset('/uploads/'.$val->image) }}" alt=" ">
+            @endif
+            @endforeach
+              <h4>
+        @foreach($extra_datanw as $val)
+            @if($val->type==1 && ($val->title))
+     {!!$val->title!!}
+        @endif
+            @endforeach
+            </h4>
               </div>
             </div>
           </a>
-          <a href="#">
-            <div class="clientbox">
-             
-              <div class="locationimg">
-                <img src="{{ asset('frontend') }}/images/Locationsimg.jpg" alt=" ">
-               <h4>Sandalwood Valley</h4>
-              </div>
-            
-            </div>
-            </a>
-            <a href="#">
-            <div class="clientbox">
-              
-              <div class="locationimg">
-               <img src="{{ asset('frontend') }}/images/Locationsimg.jpg" alt=" ">
-               <h4>Sandalwood Valley</h4>
-              </div>
-            
-            </div>
-            </a>
+
+             @endforeach
+      @endif
           </div>
         
       </div>
@@ -306,7 +308,17 @@ $testimonials = get_fields_value_where('gs_testimonial',"status='1'",'rank','asc
         <h2>{!!$val->title!!}</h2>
         @endif
               @endforeach
-        <form>
+               @if($errors->any())   
+            <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+            @foreach ($errors->all() as $error)
+            {{ $error }}<br>
+            @endforeach
+            </div>
+            @endif
+       <form method="POST" action="{{ url('homeform') }}" class="customvalidation">
+           @csrf
           <div class="form-check">
             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
             <label class="form-check-label" for="exampleRadios1"> Pricing & Availability </label>
@@ -320,13 +332,13 @@ $testimonials = get_fields_value_where('gs_testimonial',"status='1'",'rank','asc
             <label class="form-check-label" for="exampleRadios3"> Employment </label>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Name">
+            <input type="text" class="form-control numeric_input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Name" data-validation-engine="validate[required]" name="name" maxlength="10" value="{{old('name')}}">
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email" data-validation-engine="validate[required]" name="email" value="{{old('email')}}">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Phone">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Phone" maxlength="10" data-validation-engine="validate[required]" name="phone" value="{{old('phone')}}">
           </div>
           <button type="submit" class="btn btn-primary">Get Started</button>
         </form>

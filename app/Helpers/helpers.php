@@ -26,7 +26,8 @@ define("Page_Display_In_Array", serialize($page_display_in_array));
 $user_status_array = array('0'=>'Inactive', '1'=>'Active', '2'=>'Delete');
 define("User_Status_Array", serialize($user_status_array)); 
 
-$page_template_array = array('0'=>'None','1'=>'Home','2'=>'Where To Begin','3'=>'Services Offered','4'=>'Locations','5'=>'Contact Us','6'=>'Employment','7'=>'Payment');//,'3'=>'','4'=>''
+$page_template_array = array('0'=>'None','1'=>'Home','2'=>'Where To Begin','3'=>'Services Offered','4'=>'Locations','5'=>'Contact Us','6'=>'Employment',
+'7'=>'Payment','8'=>'Location Details','9'=>'Job Search','10'=>'Job Search Details','11'=>'Service Details','12'=>'Book Appoinment','13'=>'Where to Begin Details');//,'3'=>'','4'=>''
 define("Page_Template_Array", serialize($page_template_array));
 
 /*$page_template_extra_array['0'] = array('0'=>array('type'=>'0','row'=>'0'));
@@ -35,7 +36,7 @@ $page_template_extra_array['0'] = array('0'=>'0');
 $page_template_extra_array['1'] = array('1'=>'0','2'=>'1','3'=>'1','4'=>'1','5'=>'3','6'=>'1','7'=>'8','8'=>'1','9'=>'1','10'=>'6','11'=>'1','12'=>'8','13'=>'1','14'=>'1','15'=>'1');
 
 define("Page_Template_Extra_Array", serialize($page_template_extra_array));*/
-$form_array = array('0'=>'Contact Form');//, '1'=>'Country Contact Form', '2'=>'Country Proposal Form'
+$form_array = array('0'=>'Contact Form', '1'=>'Home form', '2'=>'Payment Form', '3'=>'Job Apply Form','4'=>'Book Appoinment');//
 define("Form_Array", serialize($form_array)); 
 
 $page_section_array = array(

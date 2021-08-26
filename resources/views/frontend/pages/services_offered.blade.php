@@ -4,7 +4,7 @@
 @foreach($extra_data as $val)
   @if($val->type==1)
 <!------ banner area start -------->
-<div class="subpagr_banner" style="background-image:url({{ asset('frontend') }}/images/subbanner1.jpg);">
+<div class="subpagr_banner" style="background-image:url({{ asset('/uploads/'.$val->image) }});">
   <div class="container">
      @if($val->title)<h1>{!!$val->title!!}</h1>@endif
     
@@ -31,7 +31,7 @@
             <h2 class="text-left">{!!$val->title!!}</h2>
             {!!$val->body!!}
             
-             @if($val->btn_text)<a href="{!!$val->btn_url!!}" class="more">{!!$val->btn_text?$val->btn_text:'read more'!!}</a>@endif
+             @if($val->btn_text)<a href="{{url('/service/'.$val->id)}}" class="more">{!!$val->btn_text?$val->btn_text:'read more'!!}</a>@endif
           </div>
         </div>
       </div>

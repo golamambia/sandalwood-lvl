@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Form0Export;
 use App\Exports\Form1Export;
 use App\Exports\Form2Export;
-
+use App\Exports\Form4Export;
 use Illuminate\Support\Facades\DB;
 
 
@@ -39,8 +39,21 @@ class FormController extends Controller
 			$orderby = 'created_at';
 			$order = 'desc';
 		}
-		$column_array = array('id' => 'Id', 'name' => 'Name','email' => 'Email','message' => 'Message', 'created_at' => 'Created At');
-		
+		if ($form=='0') {
+		$column_array = array('id' => 'Id', 'fname' => 'First Name', 'lname' => 'Last Name','email' => 'Email','message' => 'Message', 'created_at' => 'Created At');
+		}
+		else if ($form=='1') {
+			$column_array = array('id' => 'Id', 'name' => 'Name','email' => 'Email','phone' => 'Phone','created_at' => 'Created At');
+			
+		}else if ($form=='3') {
+			$column_array = array('id' => 'Id', 'name' => 'Name','email' => 'Email','phone' => 'Phone','created_at' => 'Created At');
+			
+		}else if ($form=='4') {
+			$column_array = array('id' => 'Id', 'name' => 'Name','email' => 'Email','phone' => 'Phone','created_at' => 'Created At');
+			
+		}else{
+			$column_array = array('id' => 'Id', 'fname' => 'First Name', 'lname' => 'Last Name','email' => 'Email','message' => 'Message','created_at' => 'Created At');
+		}
 
 		$search = Request()->search;
 
@@ -113,7 +126,12 @@ class FormController extends Controller
 	        	return Excel::download(new Form1Export, 'form-data.xlsx');
 		    }elseif ($type=='2') {
 	        	return Excel::download(new Form2Export, 'form-data.xlsx');
-		    }else{
+		    }else if ($type=='3') {
+	        	return Excel::download(new Form1Export, 'form-data.xlsx');
+		    }else if ($type=='4') {
+	        	return Excel::download(new Form4Export, 'form-data.xlsx');
+		    }
+		    else{
 	        	return Excel::download(new Form0Export, 'form-data.xlsx');
 		    }
 			// Session::flash('message', 'Exported form data successfully.');

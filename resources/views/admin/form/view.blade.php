@@ -54,20 +54,97 @@ $form_array = unserialize(Form_Array);
               <div class="row">
                 <div class="col-sm-12"> 
 
+                  @if($list->type=='1' || $list->type=='3' || $list->type=='4')
                   <div class="form-group clearfix">
                     <label class="col-sm-3 control-label">Name</label>
                     <div class="col-sm-6">{{$list->name}} </div>
                   </div>
+                
+                  @else
+                    <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-6">{{$list->fname}} </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-6">{{$list->lname}} </div>
+                  </div>
+                  @endif
 
                   <div class="form-group clearfix">
                     <label class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-6">{{$list->email}} </div>
                   </div>
-
+                   <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Phone Number</label>
+                    <div class="col-sm-6">{{$list->phone}} </div>
+                  </div>
+                   @if($list->type=='0')
+                   <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-6">{{$list->address}} </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Zip code</label>
+                    <div class="col-sm-6">{{$list->zip}} </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">State</label>
+                    <div class="col-sm-6">{{$list->state}} </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">City</label>
+                    <div class="col-sm-6">{{$list->city}} </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Reason for contact</label>
+                    <div class="col-sm-6">{{$list->reason}} </div>
+                  </div>
                   <div class="form-group clearfix">
                     <label class="col-sm-3 control-label">Message</label>
                     <div class="col-sm-6">{{$list->message}} </div>
                   </div>
+
+                  @elseif($list->type=='2')
+
+                   <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Zip code</label>
+                    <div class="col-sm-6">{{$list->zip}} </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">State</label>
+                    <div class="col-sm-6">{{$list->state}} </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">City</label>
+                    <div class="col-sm-6">{{$list->city}} </div>
+                  </div>
+                   @elseif($list->type=='3')
+                     @if($list->resume && File::exists(public_path('uploads/'.$list->resume)))
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Resume</label>
+                    <div class="col-sm-6"><a href="{{ asset('/uploads/'.$list->resume) }}" download>Download</a> </div>
+                  </div>
+                  @endif
+                   @endif
+                 @if($list->type=='4')
+                  <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Location</label>
+                    <div class="col-sm-6">{{$list->address}} </div>
+                  </div>
+                   <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Date</label>
+                    <div class="col-sm-6">{{$list->book_date}} </div>
+                  </div>
+                   <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Time</label>
+                    <div class="col-sm-6">{{$list->book_time}} </div>
+                  </div>
+                 <div class="form-group clearfix">
+                    <label class="col-sm-3 control-label">Message</label>
+                    <div class="col-sm-6">{{$list->message}} </div>
+                  </div>
+                 @endif
                   <div class="form-group clearfix">
                     <label class="col-sm-3 control-label">Created</label>
                     <div class="col-sm-6">{!! date_convert($list->created_at,3) !!} </div>

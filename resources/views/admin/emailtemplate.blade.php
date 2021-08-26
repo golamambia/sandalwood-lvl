@@ -83,13 +83,13 @@
                   </div>
                 </div>
 
-                <!-- <div class="form-group clearfix">
-                  <label class="col-sm-2 control-label">Account Approved Email</label>
+                <div class="form-group clearfix">
+                  <label class="col-sm-2 control-label">Account Close Email</label>
                   <div class="col-sm-10">
-                    <textarea class="form-control summernote" name="account_approved_email" id="account_approved_email" data-validation-engine="validate[required]" placeholder="Enter ...">{{$emailtemplate[0]->account_approved_email}}</textarea>
-                    <small>{#Fullname#} => User Full name, {#Email#} => Email, {#Loginurl#} => Login URL, {#Sitename#} => Site Title</small>
+                    <textarea class="form-control summernote" name="close_account_email" id="close_account_email" data-validation-engine="validate[required]" placeholder="Enter ...">{{$emailtemplate[0]->close_account_email}}</textarea>
+                    <small>{#Fullname#} => User Full name, {#Email#} => Email, {#Reason#} => Reason, {#Feedback#} => Feedback, {#Sitename#} => Site Title</small>
                   </div>
-                </div> -->
+                </div>
 
                 <!-- <div class="form-group clearfix">
                   <label class="col-sm-2 control-label">Order Email</label>

@@ -43,8 +43,11 @@ $footer_menu_page = get_fields_value_where('pages',"(display_in='2' or display_i
 <script src="{{asset('/frontend/js/bootstrap.min.js')}}"></script> 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/2.1.6/jquery.cycle2.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
+
 <script src="{{asset('/frontend/js/jquery.extra.js')}}"></script> 
+   <script src="{{asset('/frontend/js/ddscrollspy.js')}}"></script>
+    <script src="{{asset('/frontend/js/jquery.sticky.js')}}"></script>
 <script>
 
      jQuery(function(){
@@ -55,6 +58,11 @@ $footer_menu_page = get_fields_value_where('pages',"(display_in='2' or display_i
               jQuery('#div'+$(this).attr('target')).show();
         });
 });
+    </script>
+     <script type="text/javascript">
+    jQuery(document).ready(function(){          
+        jQuery(".applynow_area ").stick_in_parent({offset_top: 120});
+        });
     </script>
 
 <div id="loading"><div class="loader"></div></div>
@@ -125,6 +133,19 @@ $footer_menu_page = get_fields_value_where('pages',"(display_in='2' or display_i
   $('body').on('click', 'a[data-confirm]', confirmModal);
 //alert('eee');
 // $("#alertMessage").modal('show');
+$(document).ready(function() {
+    $('.numeric_input').keydown(function(event) {
+return ( event.ctrlKey || event.altKey 
+                    || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) 
+                    || (95<event.keyCode && event.keyCode<106)
+                    || (event.keyCode==8) || (event.keyCode==9) 
+                    || (event.keyCode>34 && event.keyCode<40) 
+                    || (event.keyCode==46) )
+
+
+      
+    });
+});
 </script>
 
 @if(Session::has('message')) 

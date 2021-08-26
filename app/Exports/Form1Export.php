@@ -23,7 +23,7 @@ class Form1Export implements FromCollection, WithHeadings
 		if ($lists->count()) {
 			foreach ($lists as $list) {
 				//$exportArray[] = $user->toArray();
-				$exportArray[] = array($list->id, $list->fname, $list->lname, $list->company, $list->function, $list->phone, $list->email, $list->help, $list->created_at);
+				$exportArray[] = array($list->id, $list->name, $list->email, $list->phone, $list->created_at);
 			}
 		}else{
 			$exportArray = [];
@@ -35,7 +35,7 @@ class Form1Export implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'ID', 'First Name', 'Last Name', 'Company', 'Company Headquaters', 'Phone', 'Email', 'How can We Help?', 'Created'
+            'ID', 'Name', 'Email', 'Phone', 'Created'
         ];
     }
     

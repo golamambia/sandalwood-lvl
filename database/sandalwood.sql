@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2021 at 05:30 PM
+-- Generation Time: Aug 23, 2021 at 05:27 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -126,18 +126,19 @@ CREATE TABLE `gs_forms` (
   `type` int(10) NOT NULL DEFAULT 0,
   `name` varchar(191) DEFAULT NULL,
   `email` varchar(191) DEFAULT NULL,
-  `company` varchar(191) DEFAULT NULL,
+  `address` text DEFAULT NULL,
   `phone` varchar(191) DEFAULT NULL,
-  `service` varchar(191) DEFAULT NULL,
-  `located` varchar(191) DEFAULT NULL,
+  `zip` varchar(20) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
   `message` text DEFAULT NULL,
-  `remark` text DEFAULT NULL,
-  `country` varchar(191) DEFAULT NULL,
+  `city` text DEFAULT NULL,
+  `reason` text DEFAULT NULL,
   `expand` varchar(191) DEFAULT NULL,
   `fname` varchar(191) DEFAULT NULL,
   `lname` varchar(191) DEFAULT NULL,
   `function` varchar(191) DEFAULT NULL,
   `want` varchar(191) DEFAULT NULL,
+  `resume` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -146,9 +147,27 @@ CREATE TABLE `gs_forms` (
 -- Dumping data for table `gs_forms`
 --
 
-INSERT INTO `gs_forms` (`id`, `type`, `name`, `email`, `company`, `phone`, `service`, `located`, `message`, `remark`, `country`, `expand`, `fname`, `lname`, `function`, `want`, `created_at`, `updated_at`) VALUES
-(1, 0, 'test', 'wtm.golam@gmail.com', NULL, NULL, NULL, NULL, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-30 12:02:10', '2021-07-30 12:02:10'),
-(2, 0, 'test', 'wtm.golam@gmail.com', NULL, NULL, NULL, NULL, 'tyjyjyu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-30 12:10:58', '2021-07-30 12:10:58');
+INSERT INTO `gs_forms` (`id`, `type`, `name`, `email`, `address`, `phone`, `zip`, `state`, `message`, `city`, `reason`, `expand`, `fname`, `lname`, `function`, `want`, `resume`, `created_at`, `updated_at`) VALUES
+(4, 0, NULL, 'seller@gmail.com', 'horishpur nayagram,', '7003832809', '731219', 'West Bengal', 'fbfgbgfnghnghnghnh dfbfb', 'Birbhum', 'n vgnhm', NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 12:26:18', '2021-08-22 12:26:18'),
+(3, 0, NULL, 'seller@gmail.com', 'horishpur nayagram,', '7003832809', '731219', 'West Bengal', 'gnghh', 'Birbhum', 'n vgnhm', NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 04:04:41', '2021-08-22 04:04:41'),
+(5, 0, NULL, 'seller@gmail.com', 'horishpur nayagram,', '7003832809', '731219', 'West Bengal', 'vfbgfbgfvfv fvfb', 'Birbhum', 'n vgnhm', NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 12:48:47', '2021-08-22 12:48:47'),
+(6, 0, NULL, 'seller@gmail.com', 'horishpur nayagram,', '7003832809', '731219', 'West Bengal', 'vfbb', 'Birbhum', 'n vgnhm', NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 12:49:45', '2021-08-22 12:49:45'),
+(18, 1, 'Golam', 'wtm.dev2020@gmail.com', NULL, '4535335656', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2021-08-23 01:10:51', '2021-08-23 01:10:51'),
+(8, 0, NULL, 'seller@gmail.com', NULL, '7003832809', NULL, 'West Bengal', 'ghnhnh', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 13:06:04', '2021-08-22 13:06:04'),
+(9, 2, NULL, 'seller@gmail.com', NULL, '7003832809', NULL, 'West Bengal', 'gbgnhgn', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 13:10:50', '2021-08-22 13:10:50'),
+(16, 1, 'Golam', 'wtm.dev2020@gmail.com', NULL, '45353.5656', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2021-08-23 01:10:47', '2021-08-23 01:10:47'),
+(17, 1, 'Golam', 'wtm.dev2020@gmail.com', NULL, '45353.5656', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2021-08-23 01:10:51', '2021-08-23 01:10:51'),
+(11, 2, NULL, 'seller@gmail.com', NULL, '7003832809', NULL, 'West Bengal', 'bbtbtb', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 13:14:48', '2021-08-22 13:14:48'),
+(12, 0, NULL, 'seller@gmail.com', 'horishpur nayagram,', '7003832809', '731219', 'West Bengal', 'jhjhjh', 'Birbhum', 'n vgnhm', NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 13:16:12', '2021-08-22 13:16:12'),
+(13, 0, NULL, 'seller@gmail.com', 'horishpur nayagram,', '7003832809', '731219', 'West Bengal', 'bbtgeabb', 'Birbhum', 'n vgnhm', NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 13:19:44', '2021-08-22 13:19:44'),
+(14, 2, NULL, 'seller@gmail.com', NULL, '7003832809', NULL, 'West Bengal', 'vffbgfb', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-22 13:22:16', '2021-08-22 13:22:16'),
+(19, 2, NULL, 'seller@gmail.com', NULL, '123456789', NULL, 'West Bengal', 'gnnnh', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-23 02:08:27', '2021-08-23 02:08:27'),
+(20, 2, NULL, 'seller@gmail.com', NULL, '5235365365356356', NULL, 'West Bengal', 'grrhrth', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-23 03:24:12', '2021-08-23 03:24:12'),
+(21, 2, NULL, 'seller@gmail.com', NULL, '5235365365356356', NULL, 'West Bengal', 'grrhrth', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-23 03:24:13', '2021-08-23 03:24:13'),
+(22, 2, NULL, 'seller@gmail.com', NULL, '523536536535635656', NULL, 'West Bengal', 'grrhrth', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-23 03:24:13', '2021-08-23 03:24:13'),
+(23, 2, NULL, 'seller@gmail.com', NULL, '52353653653563565656', NULL, 'West Bengal', 'grrhrth', 'Birbhum', NULL, NULL, 'Golam', 'Ambia', NULL, NULL, '', '2021-08-23 03:24:13', '2021-08-23 03:24:13'),
+(24, 3, 'Golam', 'wtm.dev2020@gmail.com', NULL, '5536556545546', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2021-08-23 11:35:09', '2021-08-23 11:35:09'),
+(25, 3, 'Golam', 'wtm.dev2020@gmail.com', NULL, '12135454578', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1629738485engagement_Notice_CMOH_Msd.pdf', '2021-08-23 11:38:05', '2021-08-23 11:38:05');
 
 -- --------------------------------------------------------
 
@@ -181,7 +200,7 @@ INSERT INTO `gs_settings` (`id`, `key`, `display_name`, `value`, `details`, `typ
 (7, 'site.meta_description', 'Meta Description', 'Sandalwood', '', 'text', 1, 'Site'),
 (8, 'site.meta_image', 'Meta Image', '1628864795logo.png', '', 'image', 1, 'Site'),
 (9, 'site.logo2', 'Site Logo 2', '1628795075favicon.png', '', 'image', 2, 'Site'),
-(10, 'site.contact_email', 'Contact Email', 'info@sandalwoodseniorkiving.com', '', 'text', 1, 'Site'),
+(10, 'site.contact_email', 'Contact Email', 'ambia@yopmail.com', '', 'text', 1, 'Site'),
 (11, 'site.support_email', 'Support Email', 'support@gmail.com', '', 'text', 1, 'Site'),
 (12, 'site.address', 'Address', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit,\r\nLorem ipsum dolor sit amet, consectetuer adipiscing elit,', '', 'text', 1, 'Site'),
 (13, 'site.email', 'Site Email', 'info@sandalwoodseniorkiving.com', '', 'text', 1, 'Site'),
@@ -312,6 +331,9 @@ CREATE TABLE `pages` (
   `menu_order` int(10) NOT NULL DEFAULT 0,
   `menu_link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `page_template` int(10) NOT NULL DEFAULT 0,
+  `job_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `schema_code` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
@@ -320,15 +342,22 @@ CREATE TABLE `pages` (
 -- Dumping data for table `pages`
 --
 
-INSERT INTO `pages` (`id`, `page_name`, `page_title`, `body`, `posttype`, `bannerimage`, `bannertext`, `image2`, `slug`, `meta_title`, `meta_keyword`, `meta_description`, `parent_id`, `display_in`, `menu_order`, `menu_link`, `page_template`, `created_at`, `updated_at`) VALUES
-(1, 'Home', NULL, NULL, 'page', NULL, NULL, NULL, 'home', 'sandalwood', 'sandalwood', 'sandalwood', 0, 0, 1, NULL, 1, '2021-08-12 18:51:18', NULL),
-(2, 'Where To Begin', 'Where To Begin', NULL, 'page', NULL, NULL, NULL, 'where-to-begin', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 2, NULL, 2, '2021-08-12 19:54:41', NULL),
-(3, 'Services Offered', 'Services Offered', NULL, 'page', NULL, NULL, NULL, 'services-offered', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 3, NULL, 3, '2021-08-12 19:57:21', NULL),
-(4, 'Locations', 'Locations', NULL, 'page', NULL, NULL, NULL, 'locations', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 4, NULL, 4, '2021-08-12 19:58:00', NULL),
-(5, 'Contact Us', 'Contact Us', NULL, 'page', NULL, NULL, NULL, 'contact-us', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 5, NULL, 5, '2021-08-12 19:58:37', NULL),
-(6, 'Employment', 'Employment', NULL, 'page', NULL, NULL, NULL, 'employment', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 6, NULL, 6, '2021-08-12 19:59:14', NULL),
-(7, 'Payment', 'Payment', NULL, 'page', NULL, NULL, NULL, 'payment', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 7, NULL, 7, '2021-08-12 19:59:53', NULL),
-(8, 'Our Company', 'Our Company', NULL, 'page', NULL, NULL, NULL, 'our-company', 'sandalwood', 'sandalwood', 'sandalwood', 2, 1, 8, '2', 0, '2021-08-12 20:06:46', NULL);
+INSERT INTO `pages` (`id`, `page_name`, `page_title`, `body`, `posttype`, `bannerimage`, `bannertext`, `image2`, `slug`, `meta_title`, `meta_keyword`, `meta_description`, `parent_id`, `display_in`, `menu_order`, `menu_link`, `page_template`, `job_type`, `location`, `schema_code`, `created_at`, `updated_at`) VALUES
+(1, 'Home', NULL, NULL, 'page', NULL, NULL, NULL, 'home', 'sandalwood', 'sandalwood', 'sandalwood', 0, 0, 1, NULL, 1, NULL, NULL, NULL, '2021-08-12 18:51:18', NULL),
+(2, 'Where To Begin', 'Where To Begin', NULL, 'page', NULL, NULL, NULL, 'where-to-begin', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 2, NULL, 2, NULL, NULL, NULL, '2021-08-12 19:54:41', NULL),
+(3, 'Services Offered', 'Services Offered', NULL, 'page', NULL, NULL, NULL, 'services-offered', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 3, NULL, 3, NULL, NULL, NULL, '2021-08-12 19:57:21', NULL),
+(4, 'Locations', 'Locations', NULL, 'page', NULL, NULL, NULL, 'locations', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 4, NULL, 4, NULL, NULL, NULL, '2021-08-12 19:58:00', NULL),
+(5, 'Contact Us', 'Contact Us', NULL, 'page', NULL, NULL, NULL, 'contact-us', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 5, NULL, 5, NULL, NULL, NULL, '2021-08-12 19:58:37', NULL),
+(6, 'Employment', 'Employment', NULL, 'page', NULL, NULL, NULL, 'employment', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 6, NULL, 6, NULL, NULL, NULL, '2021-08-12 19:59:14', NULL),
+(7, 'Payment', 'Payment', NULL, 'page', NULL, NULL, NULL, 'payment', 'sandalwood', 'sandalwood', 'sandalwood', 0, 3, 7, NULL, 7, NULL, NULL, NULL, '2021-08-12 19:59:53', NULL),
+(8, 'Our Company', 'Our Company', NULL, 'page', NULL, NULL, NULL, 'our-company', 'sandalwood', 'sandalwood', 'sandalwood', 2, 1, 8, '2', 0, NULL, NULL, NULL, '2021-08-12 20:06:46', NULL),
+(9, 'Sandalwood Creek', 'Sandalwood Creek', NULL, 'location', NULL, NULL, NULL, 'sandalwood-strong-creek-strong', 'Sandalwood Creek', 'Sandalwood Creek', 'Sandalwood Creek', 0, 0, 1, NULL, 8, NULL, NULL, NULL, '2021-08-21 10:43:12', NULL),
+(10, 'Sandalwood Village', 'Sandalwood Village', NULL, 'location', NULL, NULL, NULL, 'sandalwood-village', 'Sandalwood Village', 'Sandalwood Village', 'Sandalwood Village', 4, 0, 8, NULL, 8, NULL, NULL, NULL, '2021-08-21 12:34:36', NULL),
+(11, 'Jobs search', 'Jobs search', NULL, 'page', NULL, NULL, NULL, 'jobs-search', 'Jobs search', 'Jobs search', 'Jobs search', 0, 0, 8, NULL, 9, NULL, NULL, NULL, '2021-08-23 09:23:02', NULL),
+(12, 'Director, Dining Services', 'Director, Dining Services', '<p>Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...</p>\r\n\r\n<p>service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...</p>', 'jobsearch', NULL, NULL, NULL, 'director-dining-services', NULL, NULL, NULL, 0, 0, 9, '0', 10, 'Brookdale Monroe', '380 Forsgate Drive,  Monroe Township, NJ', NULL, '2021-08-23 12:08:19', NULL),
+(13, 'Director, Dining Services new1', 'Director, Dining Services new1', '<p>Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...</p>\r\n\r\n<p>service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...</p>', 'jobsearch', NULL, NULL, NULL, 'director-dining-services-new1', NULL, NULL, NULL, 0, 0, 10, '0', 10, 'Brookdale Monroe', '380 Forsgate Drive,  Monroe Township, NJ', NULL, '2021-08-23 12:15:15', NULL),
+(14, 'Director, Dining Services 3', 'Director, Dining Services3', '<p>Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...</p>\r\n\r\n<p>service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...</p>', 'jobsearch', NULL, NULL, NULL, 'director-dining-services-3', NULL, NULL, NULL, 0, 0, 11, '0', 10, 'Brookdale Monroe', '380 Forsgate Drive,  Monroe Township, NJ', NULL, '2021-08-23 12:16:39', NULL),
+(15, 'Director, Dining Services 4', 'Director, Dining Services4', '<p>Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...</p>\r\n\r\n<p>service and quality. Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...Directs food service operations within the community including all food preparation, dining room operations and dining delivery services. Purchases all food and manages inventory ensuring effective cost controls and vendor service and quality. Ensure...</p>', 'jobsearch', NULL, NULL, NULL, 'director-dining-services-4', NULL, NULL, NULL, 0, 0, 12, '0', 10, 'Brookdale Monroe', '380 Forsgate Drive,  Monroe Township, NJ', NULL, '2021-08-23 12:17:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -371,7 +400,7 @@ INSERT INTO `pages_extra` (`id`, `page_id`, `type`, `section_type`, `title`, `im
 (15, 6, 4, 2, 'Housekeeping Staff', '', '', NULL, NULL, NULL, NULL, 6),
 (16, 6, 4, 2, 'Building Services', '', '', NULL, NULL, NULL, NULL, 7),
 (17, 6, 3, 5, NULL, '', '', NULL, NULL, 'Employment Application', NULL, 2),
-(18, 3, 1, 1, NULL, '', '', NULL, NULL, NULL, NULL, 1),
+(18, 3, 1, 1, 'Services <strong>Offered</strong>', '1629616056subbanner1.jpg', '', NULL, NULL, NULL, NULL, 1),
 (19, 3, 2, 20, 'Assisted <span>Living</span>', '1629189593service1.png', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rhoncus, elit et eleifend aliquet, nunc purus semper dui, vel iaculis nisi urna in mi. In maximus faucibus massa at convallis. Sed vestibulum ut lacus eget commodo. Curabitur vitae est justo.</p>\r\n\r\n<p>Nunc in auctor magna. Nullam pulvinar auctor massa ut interdum. Aenean ullamcorper in mi ac ornare. Morbi at leo metus. Etiam et nisl tincidunt, commodo orci mollis, convallis massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>', NULL, 'Learn more', NULL, 1),
 (20, 3, 2, 20, 'Memory <span>Care</span>', '1629189658service2.png', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rhoncus, elit et eleifend aliquet, nunc purus semper dui, vel iaculis nisi urna in mi. In maximus faucibus massa at convallis. Sed vestibulum ut lacus eget commodo. Curabitur vitae est justo.</p>\r\n\r\n<p>Nunc in auctor magna. Nullam pulvinar auctor massa ut interdum. Aenean ullamcorper in mi ac ornare. Morbi at leo metus. Etiam et nisl tincidunt, commodo orci mollis, convallis massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>', NULL, 'Learn more', NULL, 2),
 (21, 3, 2, 20, 'Home Health <span>Care</span>', '1629189705service3.png', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rhoncus, elit et eleifend aliquet, nunc purus semper dui, vel iaculis nisi urna in mi. In maximus faucibus massa at convallis. Sed vestibulum ut lacus eget commodo. Curabitur vitae est justo.</p>\r\n\r\n<p>Nunc in auctor magna. Nullam pulvinar auctor massa ut interdum. Aenean ullamcorper in mi ac ornare. Morbi at leo metus. Etiam et nisl tincidunt, commodo orci mollis, convallis massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>', NULL, 'Learn more', NULL, 3),
@@ -402,7 +431,40 @@ INSERT INTO `pages_extra` (`id`, `page_id`, `type`, `section_type`, `title`, `im
 (46, 1, 13, 16, 'Helping Seniors Learn New Hobbies', '1629436440newimg.jpg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh.</p>', 'July 24, 2021', NULL, NULL, 1),
 (47, 1, 13, 16, 'Helping Seniors Learn New Hobbies', '1629436632newimg1.jpg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh.</p>', 'July 24, 2021', NULL, NULL, 2),
 (48, 1, 13, 16, 'Helping Seniors Learn New Hobbies', '1629436632newimg2.jpg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh.</p>', 'July 24, 2021', NULL, NULL, 3),
-(50, 1, 14, 8, 'How Can We Help?', '', '', NULL, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55565170.29301636!2d-132.08532758867793!3d31.786060306224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sin!4v1627911753138!5m2!1sen!2sin', NULL, NULL, 1);
+(50, 1, 14, 8, 'How Can We Help?', '', '', NULL, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55565170.29301636!2d-132.08532758867793!3d31.786060306224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sin!4v1627911753138!5m2!1sen!2sin', NULL, NULL, 1),
+(51, 9, 1, 13, 'Sandalwood <strong>Creek</strong>', '', '', '<p>Nunc mollis, libero non pretium cursus, ante enim tempus lacus, vitae scelerisque velit nibh et neque. Donec sit amet dictum velit. Cras rhoncus ac felis fringilla rhoncus. Nullam lacinia quis purus in viverra. Curabitur ullamcorper suscipit aliquam. Nam iaculis ac massa vel aliquet. Nunc elementum velit at odio facilisis fringilla. Mauris euismod tincidunt rutrum.</p>\r\n\r\n<p>Praesent neque ex, hendrerit et risus a, consectetur volutpat eros. Curabitur luctus accumsan magna, nec malesuada leo dapibus sit amet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras a massa ac nisl dignissim auctor. Duis semper placerat congue. Pellentesque sagittis iaculis velit, ac elementum sapien suscipit vel.</p>', NULL, NULL, NULL, 1),
+(52, 9, 2, 15, '810-367-7192', '', '', '<p>5485 Smiths Creek Rd. Kimball,<br />\r\nMI 48074</p>', '810-367-4308', 'sandalwoofcreek@gmail.com', 'www.sandalwood.com', 1),
+(53, 9, 3, 8, '<strong>Property Id :</strong> 59', '', '', NULL, '<strong>Rooms:</strong> 9', NULL, NULL, 1),
+(54, 9, 3, 8, '<strong>Property Size :</strong> 190 ft2', '', '', NULL, '<strong>Bedrooms :</strong> 5', NULL, NULL, 2),
+(55, 9, 3, 8, '<strong>Property Lot Size:</strong> 2,000 ft2', '', '', NULL, '<strong>Structure Type :</strong> Brick', NULL, NULL, 3),
+(56, 9, 1, 3, NULL, '1629548280location-img1.png', '', NULL, NULL, NULL, NULL, 2),
+(57, 9, 4, 3, NULL, '1629548381location-img2.png', '', NULL, NULL, NULL, NULL, 1),
+(58, 9, 4, 3, NULL, '1629548381location-img3.png', '', NULL, NULL, NULL, NULL, 2),
+(59, 9, 4, 3, NULL, '1629548381location-img4.png', '', NULL, NULL, NULL, NULL, 3),
+(60, 9, 4, 3, NULL, '1629548381location-img5.png', '', NULL, NULL, NULL, NULL, 4),
+(61, 10, 1, 13, 'Sandalwood <strong>Creek</strong>', '', '', '<p>Nunc mollis, libero non pretium cursus, ante enim tempus lacus, vitae scelerisque velit nibh et neque. Donec sit amet dictum velit. Cras rhoncus ac felis fringilla rhoncus. Nullam lacinia quis purus in viverra. Curabitur ullamcorper suscipit aliquam. Nam iaculis ac massa vel aliquet. Nunc elementum velit at odio facilisis fringilla. Mauris euismod tincidunt rutrum.</p>\r\n\r\n<p>Praesent neque ex, hendrerit et risus a, consectetur volutpat eros. Curabitur luctus accumsan magna, nec malesuada leo dapibus sit amet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras a massa ac nisl dignissim auctor. Duis semper placerat congue. Pellentesque sagittis iaculis velit, ac elementum sapien suscipit vel.</p>', NULL, NULL, NULL, 1),
+(62, 10, 1, 3, NULL, '1629549523location-img7.png', '', NULL, NULL, NULL, NULL, 2),
+(63, 10, 2, 15, '810-367-7192', '', '', '<p>5485 Smiths Creek Rd. Kimball,<br />\r\nMI 48074</p>', '810-367-4308', 'sandalwoofcreek@gmail.com', 'www.sandalwood.com', 1),
+(64, 10, 3, 8, '<strong>Property Id :</strong> 59', '', '', NULL, '<strong>Rooms:</strong> 9', NULL, NULL, 1),
+(65, 10, 3, 8, '<strong>Property Size :</strong> 190 ft2', '', '', NULL, '<strong>Bedrooms :</strong> 5', NULL, NULL, 2),
+(66, 10, 3, 8, '<strong>Property Lot Size:</strong> 2,000 ft2', '', '', NULL, '<strong>Structure Type :</strong> Brick', NULL, NULL, 3),
+(67, 10, 4, 3, NULL, '1629550016location-img1.png', '', NULL, NULL, NULL, NULL, 1),
+(68, 10, 4, 3, NULL, '1629550080location-img8.png', '', NULL, NULL, NULL, NULL, 2),
+(69, 10, 4, 3, NULL, '1629550080location-img6.png', '', NULL, NULL, NULL, NULL, 3),
+(70, 10, 4, 3, NULL, '1629550080location-img4.png', '', NULL, NULL, NULL, NULL, 4),
+(71, 10, 4, 3, NULL, '1629550080location-img3.png', '', NULL, NULL, NULL, NULL, 5),
+(72, 4, 1, 1, 'Locations', '1629551714subbanner1.jpg', '', NULL, NULL, NULL, NULL, 1),
+(73, 5, 1, 1, 'Contact <strong>Us</strong>', '1629614712subbanner1.jpg', '', NULL, NULL, NULL, NULL, 1),
+(74, 5, 2, 13, 'contact <span>us</span>', '', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh. Ut rhoncus metus sollicitudin.</p>', NULL, NULL, NULL, 1),
+(75, 5, 3, 15, 'Sandalwood <span>Village</span>', '', '', '<p>586-949-6220</p>', '47640 Gratiot Ave. Chesterfield,  MI  48051', '586-949-6225', 'info@sandalwood.com', 1),
+(76, 5, 3, 15, 'Sandalwood <span>Village</span>', '', '', '<p>586-949-6220</p>', '47640 Gratiot Ave. Chesterfield,  MI  48051', '586-949-6225', 'info@sandalwood.com', 2),
+(77, 5, 3, 15, 'Sandalwood <span>Village</span>', '', '', '<p>586-949-6220</p>', '47640 Gratiot Ave. Chesterfield,  MI  48051', '586-949-6225', 'info@sandalwood.com', 3),
+(78, 5, 4, 13, 'Request A Quote', '', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh. Ut rhoncus metus sollicitudin.</p>', NULL, NULL, NULL, 1),
+(79, 7, 1, 1, 'Payment', '1629616182subbanner1.jpg', '', NULL, NULL, NULL, NULL, 1),
+(80, 7, 2, 6, NULL, '', '', NULL, NULL, 'PAY NOW', NULL, 1),
+(81, 7, 3, 8, 'Personal <span>Information</span>', '', '', NULL, NULL, NULL, NULL, 1),
+(82, 1, 15, 8, 'Our <span>Locations</span>', '', '', NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh. Ut rhoncus metus sollicitudin magna consequat posuere.', NULL, NULL, 1),
+(83, 11, 1, 1, 'Employment', '1629710582subbanner1.jpg', '', NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -551,7 +613,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `status`, `avatar`, `last_login`, `already_logged`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Super Admin', 'admin@admin.com', '2021-07-01 19:30:00', '$2y$10$fafvoHo6AAqo2XOy8HjFq.ENezfr17PcQ7XcZAJ1DWb1wLp1poDeq', NULL, 1, NULL, '2021-08-19 21:57:27', 1, '2021-07-02 05:30:27', '2021-07-02 05:30:27');
+(1, 1, 'Super Admin', 'admin@admin.com', '2021-07-01 19:30:00', '$2y$10$fafvoHo6AAqo2XOy8HjFq.ENezfr17PcQ7XcZAJ1DWb1wLp1poDeq', NULL, 1, NULL, '2021-08-23 00:58:30', 1, '2021-07-02 05:30:27', '2021-07-02 05:30:27');
 
 --
 -- Indexes for dumped tables
@@ -701,7 +763,7 @@ ALTER TABLE `gs_country`
 -- AUTO_INCREMENT for table `gs_forms`
 --
 ALTER TABLE `gs_forms`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `gs_settings`
@@ -737,13 +799,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `pages_extra`
 --
 ALTER TABLE `pages_extra`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `roles`

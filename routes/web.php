@@ -70,23 +70,32 @@ Route::post('/admin/page/update', [App\Http\Controllers\PageController::class, '
 Route::get('/admin/page-extra/delete/{id}', [App\Http\Controllers\PageController::class, 'page_extra_remove_image']);
 Route::get('/admin/page-extra/content-delete/{id}', [App\Http\Controllers\PageController::class, 'page_extra_remove']);
 Route::get('/admin/page/delete/{id}', [App\Http\Controllers\PageController::class, 'delete']);
+/*Location*/
+Route::get('/admin/location', [App\Http\Controllers\ServiceController::class, 'index']);
+Route::get('/admin/location/add', [App\Http\Controllers\ServiceController::class, 'add']);
+Route::post('/admin/location/add', [App\Http\Controllers\ServiceController::class, 'insert']);
+Route::get('/admin/location/edit/{id}', [App\Http\Controllers\ServiceController::class, 'edit']);
+Route::post('/admin/location/update', [App\Http\Controllers\ServiceController::class, 'update']);
+Route::get('/admin/location-extra/delete/{id}', [App\Http\Controllers\ServiceController::class, 'page_extra_remove_image']);
+Route::get('/admin/location-extra/content-delete/{id}', [App\Http\Controllers\ServiceController::class, 'page_extra_remove']);
+Route::get('/admin/location/delete/{id}', [App\Http\Controllers\ServiceController::class, 'delete']);
 
+/*Where to begin*/
+Route::get('/admin/where_begin', [App\Http\Controllers\WhereBeginController::class, 'index']);
+Route::get('/admin/where_begin/add', [App\Http\Controllers\WhereBeginController::class, 'add']);
+Route::post('/admin/where_begin/add', [App\Http\Controllers\WhereBeginController::class, 'insert']);
+Route::get('/admin/where_begin/edit/{id}', [App\Http\Controllers\WhereBeginController::class, 'edit']);
+Route::post('/admin/where_begin/update', [App\Http\Controllers\WhereBeginController::class, 'update']);
+Route::get('/admin/where_begin-extra/delete/{id}', [App\Http\Controllers\WhereBeginController::class, 'page_extra_remove_image']);
+Route::get('/admin/where_begin-extra/content-delete/{id}', [App\Http\Controllers\WhereBeginController::class, 'page_extra_remove']);
+Route::get('/admin/where_begin/delete/{id}', [App\Http\Controllers\WhereBeginController::class, 'delete']);
 /*Service*/
-Route::get('/admin/service', [App\Http\Controllers\PageController::class, 'service']);
-Route::get('/admin/service/add', [App\Http\Controllers\PageController::class, 'serviceadd']);
-Route::post('/admin/service/add', [App\Http\Controllers\PageController::class, 'serviceinsert']);
-Route::get('/admin/service/edit/{id}', [App\Http\Controllers\PageController::class, 'serviceedit']);
-Route::post('/admin/service/update', [App\Http\Controllers\PageController::class, 'serviceupdate']);
-
-/*Testimonial*/
-Route::get('/admin/testimonial', [App\Http\Controllers\TestimonialController::class, 'index']);
-Route::get('/admin/testimonial/add', [App\Http\Controllers\TestimonialController::class, 'add']);
-Route::post('/admin/testimonial/add', [App\Http\Controllers\TestimonialController::class, 'insert']);
-Route::get('/admin/testimonial/edit/{id}', [App\Http\Controllers\TestimonialController::class, 'edit']);
-Route::post('/admin/testimonial/update', [App\Http\Controllers\TestimonialController::class, 'update']);
-Route::get('/admin/testimonial/delete/{id}', [App\Http\Controllers\TestimonialController::class, 'delete']);
-Route::get('/admin/testimonial/status/{id}/{status}', [App\Http\Controllers\TestimonialController::class, 'status']);
-Route::get('/admin/testimonial/file-destroy/{id}', [App\Http\Controllers\TestimonialController::class, 'file_destroy']);
+/*Country page*/
+Route::get('/admin/jobpage', [App\Http\Controllers\PageController::class, 'jobpage']);
+Route::get('/admin/jobpage/add', [App\Http\Controllers\PageController::class, 'jobpageadd']);
+Route::post('/admin/jobpage/add', [App\Http\Controllers\PageController::class, 'jobpageinsert']);
+Route::get('/admin/jobpage/edit/{id}', [App\Http\Controllers\PageController::class, 'jobpageedit']);
+Route::post('/admin/jobpage/update', [App\Http\Controllers\PageController::class, 'jobpageupdate']);
 
 /*Country*/
 Route::get('/admin/country', [App\Http\Controllers\CountryController::class, 'index']);
@@ -98,14 +107,15 @@ Route::get('/admin/country/delete/{id}', [App\Http\Controllers\CountryController
 Route::get('/admin/country/status/{id}/{status}', [App\Http\Controllers\CountryController::class, 'status']);
 Route::get('/admin/country/file-destroy/{id}', [App\Http\Controllers\CountryController::class, 'file_destroy']);
 /*Service*/
-Route::get('/admin/service', [App\Http\Controllers\ServiceController::class, 'index']);
-Route::get('/admin/service/add', [App\Http\Controllers\ServiceController::class, 'add']);
-Route::post('/admin/service/add', [App\Http\Controllers\ServiceController::class, 'insert']);
-Route::get('/admin/service/edit/{id}', [App\Http\Controllers\ServiceController::class, 'edit']);
-Route::post('/admin/service/update', [App\Http\Controllers\ServiceController::class, 'update']);
-Route::get('/admin/service/delete/{id}', [App\Http\Controllers\ServiceController::class, 'delete']);
-Route::get('/admin/service/status/{id}/{status}', [App\Http\Controllers\ServiceController::class, 'status']);
-Route::get('/admin/service/file-destroy/{id}', [App\Http\Controllers\ServiceController::class, 'file_destroy']);
+Route::get('/admin/service', [App\Http\Controllers\PageController::class, 'index']);
+Route::get('/admin/service/add', [App\Http\Controllers\PageController::class, 'add']);
+Route::post('/admin/service/add', [App\Http\Controllers\PageController::class, 'insert']);
+Route::get('/admin/service/edit/{id}', [App\Http\Controllers\PageController::class, 'edit']);
+Route::post('/admin/service/update', [App\Http\Controllers\PageController::class, 'update']);
+//Route::get('/admin/service/delete/{id}', [App\Http\Controllers\PageController::class, 'delete']);
+//Route::get('/admin/service/status/{id}/{status}', [App\Http\Controllers\PageController::class, 'status']);
+//Route::get('/admin/service/file-destroy/{id}', [App\Http\Controllers\PageController::class, 'file_destroy']);
+
 /*Service category*/
 Route::get('/admin/service_category', [App\Http\Controllers\Service_categoryController::class, 'index']);
 Route::get('/admin/service_category/add', [App\Http\Controllers\Service_categoryController::class, 'add']);
@@ -182,7 +192,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/404', [App\Http\Controllers\PageController::class, 'not_found']);
 Route::post('/contact', [App\Http\Controllers\PageController::class, 'contactform']);
-
+Route::post('/paymentform', [App\Http\Controllers\PageController::class, 'paymentform']);
+Route::post('/homeform', [App\Http\Controllers\PageController::class, 'homeform']);
+Route::post('/careerform', [App\Http\Controllers\PageController::class, 'careerform']);
+Route::post('/book_appoinment', [App\Http\Controllers\PageController::class, 'book_appoinment']);
 
 Route::get('/{slug}', [App\Http\Controllers\PageController::class, 'ShowPage']);
+Route::get('/service/{id}', [App\Http\Controllers\PageController::class, 'ShowPageService']);
 

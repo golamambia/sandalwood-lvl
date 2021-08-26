@@ -1,16 +1,19 @@
 @include('frontend.header')
 
+
+@foreach($extra_data as $val)
+  @if($val->type==1)
 <!------ banner area start -------->
-<div class="subpagr_banner" style="background-image:url({{ asset('frontend') }}/images/subbanner1.jpg);">
-      <div class="container">
-          <h1>Contact <strong>Us</strong></h1>
-              <nav class="breadcrumb">
-              <a class="breadcrumb-item" href="{{url('/')}}">home</a>
-              <span class="breadcrumb-item active">news</span>
-            </nav>
-        </div>
+<div class="subpagr_banner" style="background-image:url({{ asset('/uploads/'.$val->image) }});">
+  <div class="container">
+     @if($val->title)<h1>{!!$val->title!!}</h1>@endif
+    
+    <nav class="breadcrumb"> <a class="breadcrumb-item" href="{{ url('/') }}">home</a> <span class="breadcrumb-item active">{{$page->page_title}}</span> </nav>
+  </div>
 </div>
 <!------ banner area stop --------> 
+ @endif
+@endforeach
 
 <!------ main area start -------->
 
@@ -19,99 +22,104 @@
   <div class="contact_page">
     <div class="container">
       <div class="contact_pagetop">
-        <h2>contact <span>us</span></h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh. Ut rhoncus metus sollicitudin.</p>
+        @foreach($extra_data as $val)
+  @if($val->type==2)
+        <h2>{!!$val->title!!}</h2>
+        {!!$val->body!!}
+        @endif
+@endforeach
         <div class="row">
+             @foreach($extra_data as $val)
+  @if($val->type==3)
           <div class="col-lg-4 col-md-6">
             <div class="card">
-              <h3>Sandalwood <span>Village</span></h3>
+              <h3>{!!$val->title!!}</h3>
               <ul>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact1.png" alt="#"> 47640 Gratiot Ave. Chesterfield, 
-MI  48051</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact2.png" alt="#"> 586-949-6220</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact3.png" alt="#"> 586-949-6225</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact4.png" alt="#"> info@sandalwood.com</li>
+                  @if($val->sub_title)
+                <li><img src="{{ asset('frontend') }}/images/iconcontact1.png" alt="#"> {!!$val->sub_title!!}</li>
+                @endif
+                @if($val->body)
+                <li><img src="{{ asset('frontend') }}/images/iconcontact2.png" alt="#"> {{strip_tags($val->body)}}</li>
+                @endif
+                @if($val->btn_text)
+                <li><img src="{{ asset('frontend') }}/images/iconcontact3.png" alt="#"> {!!$val->btn_text!!}</li>
+                @endif
+                @if($val->btn_url)
+                <li><img src="{{ asset('frontend') }}/images/iconcontact4.png" alt="#"> {!!$val->btn_url!!}</li>
+                @endif
               </ul>
               <a href="#" class="btn btn-outline-primary">View Google Maps</a>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card">
-              <h3>Sandalwood <span>Village</span></h3>
-              <ul>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact1.png" alt="#"> 47640 Gratiot Ave. Chesterfield, 
-MI  48051</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact2.png" alt="#"> 586-949-6220</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact3.png" alt="#"> 586-949-6225</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact4.png" alt="#"> info@sandalwood.com</li>
-              </ul>
-              <a href="#" class="btn btn-outline-primary">View Google Maps</a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card">
-              <h3>Sandalwood <span>Village</span></h3>
-              <ul>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact1.png" alt="#"> 47640 Gratiot Ave. Chesterfield, 
-MI  48051</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact2.png" alt="#"> 586-949-6220</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact3.png" alt="#"> 586-949-6225</li>
-                <li><img src="{{ asset('frontend') }}/images/iconcontact4.png" alt="#"> info@sandalwood.com</li>
-              </ul>
-              <a href="#" class="btn btn-outline-primary">View Google Maps</a>
-            </div>
-          </div>
+    @endif
+@endforeach
         </div>
       </div>
       <div class="contact_pageformbox">
-          <h2>Request A Quote</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut sollicitudin tortor, sit amet iaculis nibh. Ut rhoncus metus sollicitudin.</p>
-          <form action="" method="post">
+            @foreach($extra_data as $val)
+  @if($val->type==4)
+        <h2>{!!$val->title!!}</h2>
+        {!!$val->body!!}
+        @endif
+@endforeach
+ @if($errors->any())   
+            <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+            @foreach ($errors->all() as $error)
+            {{ $error }}<br>
+            @endforeach
+            </div>
+            @endif
+        <form method="POST" action="{{ url('contact') }}" class="customvalidation">
+           @csrf
             <div class="row">
               <div class="col-lg-6">
                 <div class="row row-8">
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="" placeholder="First Name*">
+                      <input type="text" class="form-control" placeholder="First Name*" data-validation-engine="validate[required]" name="fname" value="{{old('fname')}}">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="" placeholder="Last Name*">
+                      <input type="text" class="form-control" placeholder="Last Name*" data-validation-engine="validate[required]" name="lname" value="{{old('lname')}}">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <input type="email" class="form-control" name="" placeholder="Email*">
+                      <input type="email" class="form-control"  placeholder="Email*" data-validation-engine="validate[required]" name="email" value="{{old('email')}}">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <input type="number" class="form-control" name="" placeholder="Phone*">
+                      <input type="text" class="form-control numeric_input"placeholder="Phone*" data-validation-engine="validate[required]" name="phone" maxlength="10" value="{{old('phone')}}">
                     </div>
                   </div>
                    <div class="col-lg-6">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="" placeholder="Address*">
+                      <input type="text" class="form-control" placeholder="Address*" data-validation-engine="validate[required]" name="address" value="{{old('address')}}">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="" placeholder="Zip Code*">
+                      <input type="text" class="form-control"  placeholder="Zip Code*" data-validation-engine="validate[required]" name="zip" value="{{old('zip')}}">
                     </div>
-                  </div>
+                  </div> 
                   <div class="col-lg-6">
                     <div class="form-group">
-                       <select class="select form-control" name="estados" id="estados">
+                       <input type="text" class="form-control" placeholder="State*" data-validation-engine="validate[required]" name="state" value="{{old('state')}}">
+                      <!--  <select class="select form-control" name="estados" id="estados">
                           <option value="selecione" disabled selected>Selet State</option>
-                      </select>
+                      </select> -->
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <select class="select form-control" name="cidades" id="cidades">
+                       <input type="text" class="form-control" placeholder="City*" data-validation-engine="validate[required]" name="city" value="{{old('city')}}">
+                      <!-- <select class="select form-control" name="cidades" id="cidades">
                          <option value="selecione" disabled selected>Selet city</option>
-                      </select>
+                      </select> -->
                     </div>
                   </div>
                 </div>
@@ -119,12 +127,13 @@ MI  48051</li>
               <div class="col-lg-6">
              
                    <div class="form-group">
-                      <select class=" form-control" name="" id="">
+                     <input type="text" class="form-control" placeholder="Reason for Contact*" data-validation-engine="validate[required]" name="reason" value="{{old('reason')}}">
+                     <!--  <select class=" form-control" name="" id="">
                          <option value="selecione" disabled selected>Reason for Contact</option>
-                      </select>
+                      </select> -->
                     </div>
                     <div class="form-group">
-                      <textarea class=" form-control" placeholder="Message"></textarea>
+                      <textarea class=" form-control" placeholder="Message" name="message">{{old('message')}}</textarea>
                     </div>
                     <input type="submit" class="btn btn-primary" value="Submit now" name="">
               </div>

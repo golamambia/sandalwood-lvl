@@ -1,3 +1,8 @@
+<?php
+$servicelp = get_fields_value_where('pages',"page_template=3",'id','desc');
+//echo $servicelp->count();
+?>
+     
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +33,8 @@
 <!--<link href="css/jquery.popup.min.css" rel="stylesheet" type="text/css">-->
 <link href="{{ asset("/frontend/css/style.css") }}" rel="stylesheet">
 <link href="{{ asset("/frontend/css/responsive.css") }}" rel="stylesheet">
-
+<link href="{{ asset("/frontend/css/thimepage.css") }}" rel="stylesheet" type="text/css">
+<link href="{{ asset("/frontend/css/timepick.css") }}" rel="stylesheet" type="text/css">
 </head>
 
 <body class="host_version">
@@ -94,7 +100,25 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
         }
         $header_sub_menu = get_fields_value_where('pages',"(display_in='1' or display_in='3') and parent_id='".$menu->id."'",'menu_order','asc');
         ?>
-        <li class="{!!$active_menu!!}"><a  href="{{url('/'.$slug)}}">{!!$menu->page_name!!} @if($header_sub_menu->count() > 0)<span><i class="fas fa-chevron-down"></i></span>@endif</a>
+        <li class="{!!$active_menu!!}"><a  href="{{url('/'.$slug)}}">{!!$menu->page_name!!} @if($header_sub_menu->count() > 0)<span><i class="fas fa-chevron-down"></i></span>@endif @if($menu->page_template==3)<span><i class="fas fa-chevron-down"></i></span>@endif</a>
+           @if($menu->page_template==3)
+           <ul>
+              @if($servicelp->count() > 0)
+              
+ @foreach($servicelp as $lt_val)
+ <?php
+  
+$extra_datanw = get_fields_value_where('pages_extra',"page_id=".$lt_val->id,'id','desc');
+?>
+          @foreach($extra_datanw as $valnw)
+            @if($valnw->type==2)
+          <li ><a href="{{url('/service/'.$valnw->id)}}">{{strip_tags($valnw->title)}}</a></li>
+                 @endif
+                 @endforeach
+          @endforeach
+           @endif
+           </ul>
+            @endif
           @if($header_sub_menu->count() > 0)
           <ul>
           @foreach($header_sub_menu as $sub_menu)
@@ -109,8 +133,9 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
             $active_sub_menu = ($page && ($page->parent_id==$sub_menu->id || $page->id==$sub_menu->id || $sub_menu->menu_link==$page->id)) ? 'active' : '' ;
           }
           ?>
-          <li class="{!!$active_sub_menu!!}"><a  href="{{url('/'.$sub_slug)}}">{{$sub_menu->page_name}}</a></li>
+          <li class="{!!$active_sub_menu!!}"><a  href="{{url('/'.$sub_menu->slug)}}">{{$sub_menu->page_name}}</a></li>
           @endforeach
+         
           </ul>
           @endif
         </li>
@@ -119,7 +144,19 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
       </div>
       <div class="header_rightresponsivebox d-flex align-items-center">
         <ul class="d-flex align-items-center">
-          <li><a href="#" class="btn btn-primary">book now</a></li>
+            
+        <?php
+        $header_mn = get_fields_value_where('pages',"page_template=12",'id','desc');
+        //$counter++;
+        //echo $slug = $menu->page_template;
+        
+        ?>
+         @foreach($header_mn as $menu)
+          @if($menu->page_template=='12')
+           
+          <li><a href="{{ url('/'.$menu->slug) }}" class="btn btn-primary"><span> <img src="{{asset('/frontend/images/boockingicon.png')}}" alt=""></span>{!!$menu->page_name!!}</a></li>
+         @endif
+          @endforeach
           <li><a href="tel:{!!config('site.phone')!!}" class=""><i class="fas fa-phone-alt"></i></a></li>
           <li><a href="mailto:{!!config('site.email')!!}" class=""><i class="fas fa-envelope"></i></a></li>
         </ul>

@@ -99,19 +99,18 @@ h6,
     width: 24px;
     height: 24px;
     border: 2px solid hsl(0deg 0% 100% / 89%);
-    border-radius: 0 6px 0;
+    border-radius: 50%;
     color: #ffffff;
     text-align: center;
     line-height: 20px;
     font-size: 12px;
     background-color: #1cd5e9;
-     transition: all ease-in-out 0.5s;
+    transition: all ease-in-out 0.5s;
     -moz-transition: all ease-in-out 0.5s;
     -webkit-transition: all ease-in-out 0.5s;
     -o-transition: all ease-in-out 0.5s;
     -ms-transition: all ease-in-out 0.5s;
     -khtml-transition: all ease-in-out 0.5s;
-
 }
 .social ul li a:hover {
     border-color: rgb(255 255 255 / 45%);
@@ -120,20 +119,20 @@ h6,
 
 .marquee_text {
     position: absolute;
-    max-width: 50%;
+    max-width: 49%;
     width: 100%;
     margin: auto;
     color: #fff;
     overflow: hidden;
-    left: 17%;
+    left: 15%;
     right: auto;
     font-size: 14px;
     font-weight: 600;
     top: 50%;
     -ms-transition: translate(0, -50%);
--o-transition: translate(0, -50%);
--moz-transition: translate(0, -50%);
--webkit-transform: translate(0, -50%);
+    -o-transition: translate(0, -50%);
+    -moz-transition: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%);
 }
 .header_rightresponsivebox{ margin-left: 30px; }
@@ -142,15 +141,28 @@ h6,
 .header_rightresponsivebox ul li:first-child{ display: inline-block; vertical-align: middle; }
 
 .header_rightresponsivebox .btn-primary {
-    background: rgb(94,111,181);
-    background: linear-gradient(90deg, rgba(94,111,181,1) 0%, rgba(33,111,163,1) 48%, rgba(45,201,219,1) 100%);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    border: none;
-    border-radius: 30px;
-    padding: 8px 18px;
-    text-transform: capitalize;
+    /* background: rgb(94,111,181); */
+    /* background: linear-gradient(90deg, rgba(94,111,181,1) 0%, rgba(33,111,163,1) 48%, rgba(45,201,219,1) 100%); */
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    /* border: none; */
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-transform: uppercase;
+    background-color: #1cd5e9;
+    border-color: #ffffff;
+    line-height: 24px;
+}
+.header_rightresponsivebox .btn-primary span {
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 6px;
+    width: 36px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 7px;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 19%);
 }
 .header_rightresponsivebox .btn-primary:hover {
     background: rgb(94,111,181);
@@ -178,12 +190,12 @@ h6,
 }
 .header_area .container{ position: relative; }
 .header_area .logo {
-    max-width: 146px;
+    max-width: 170px;
     width: 100%;
     float: left;
     position: absolute;
     background-color: #fff;
-    z-index: 24;
+    z-index: 99;
     box-sizing: border-box;
     padding: 12px;
     box-shadow: 0px 4px 1px hsl(210deg 100% 19% / 14%);
@@ -233,11 +245,11 @@ h6,
 
 .menu ul li a {
     color: #000;
-    font-size: 16px;
+    font-size: 15px;
     text-transform: capitalize;
     font-weight: 500;
     display: block;
-    padding: 18px 12px;
+    padding: 18px 10px;
 }
 
 .menu ul li:last-child a{ padding-right: 0; }
@@ -258,7 +270,7 @@ h6,
     /*background-color: #262262;*/
 }
 .menu ul li:hover ul li a {
-    color: #fff;
+    color: #003060;
 }
 .menu ul li:hover ul li a:hover {
     color: #fff;
@@ -268,17 +280,16 @@ h6,
     width: 240px;
     /* display: none; */
     position: absolute;
-    top: calc(100% + 30px);
+    top: calc(100% + 0px);
     left: 0;
     z-index: 9;
-    background-color: #003060;
+    background-color: #ffffff;
     text-align: left;
     box-shadow: 0px 8px 14px rgb(0 0 0 / 13%);
     padding: 0px;
     transition: 0.3s;
     opacity: 0;
-	visibility: hidden;
-    
+    visibility: hidden;
 }
 .menu ul ul li:first-child:before{ display: none; }
 .menu ul ul li:after {
@@ -514,7 +525,7 @@ h6,
     padding: 10px 0;
 }
 .header_area.fix .logo {
-    max-width: 113px;
+    max-width: 126px;
     /* box-shadow: none; */
     /* position: relative; */
 }
@@ -562,16 +573,16 @@ h6,
     position: relative;
     overflow: hidden;
 }
-.home-slider:after{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(0 0 0 / 56%);
+/*.home-slider:after{*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: rgb(0 0 0 / 56%);*/
     /*z-index: 9;*/
-}
+/*}*/
 
 .home-slideshow {
     width: 100%;
@@ -632,30 +643,34 @@ h6,
 }
 
 .home-slideshow .slide .con {
-     max-width: 580px;
+    max-width: 700px;
     padding-right: 0;
     text-align: left;
     box-sizing: border-box;
-  
 }
 .home-slideshow .slide .con p {
     font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
     text-transform: capitalize;
     color: #000;
-    margin-bottom: 20px;
-    
+    margin-bottom: 24px;
+    max-width: 480px;
 }
 
 .home-slideshow .slide .con h2 {
-    line-height: 56px;
-    font-size: 47px;
+    line-height: 50px;
+    font-size: 44px;
     font-weight: 700;
     margin-bottom: 20px;
     color: #003060;
+     text-shadow: -2px 2px 0px rgb(0 48 96 / 12%);
 }
-.home-slideshow .slide .con h2 span{ color:#1ed0e2;}
+.home-slideshow .slide .con h2 br{ display:none;}
+.home-slideshow .slide .con h2 span {
+    color: #1cd5e9;
+   
+}
 
 .home-slideshow .slide .btn-primary {
     background: rgb(94,111,181);
@@ -742,6 +757,10 @@ transition: all .3s ease-in-out;}
 .since{ background:url(../images/about_icon2.PNG) no-repeat bottom right #1ed0e2; width:375px; position:absolute; bottom:25px; left:0px;padding: 26px 0px 26px 26px;}
 .since h5{ font-size:24px; color:#fff; margin-bottom:0px;}
 .since span{ margin-right:20px;float: left;}
+.aboutus_area .small, .aboutus_area small {
+    font-size: 100%;
+    font-weight: 400;
+}
 /*-------- About Us css stop --------*/
 
 
@@ -1038,7 +1057,12 @@ color: #fff; transition:all .3s ease-in-out;}
 
 
 /*-------- Clients css start --------*/
-.clientsay_area{ position: relative; z-index: 1; padding:60px 0px; }
+.clientsay_area {
+    position: relative;
+    z-index: 1;
+    padding: 60px 0px;
+    text-align: center;
+}
 .clientsay_area h2 {font-size: 46px;color: #003060; text-transform: capitalize; font-weight:500;margin-bottom: 15px;}
 .clientsay_area h2 span{ color: #1ed0e2; }
 .clientsay_area p {
@@ -1046,6 +1070,7 @@ color: #fff; transition:all .3s ease-in-out;}
     color: #000000;
     font-weight: 500;
     width: 65%;
+    margin:auto;
     margin-bottom: 25px;
 }
 .client_rightbox {box-sizing: border-box;padding: 30px 0px;width: 100%;}
@@ -2402,9 +2427,9 @@ margin-bottom: 15px;
     font-size: 15px;
     color: #000000;
     font-weight: 500;
-    width: 65%;
+    width:100%;
     margin: 0 auto 30px;
-    text-align: center;
+    text-align: left;
 }
 .contact_pagetop .card {
     box-sizing: border-box;
@@ -3192,6 +3217,27 @@ border-top: 13px solid transparent;border-bottom: 13px solid transparent;top: 9p
 }
 .locationarea:nth-of-type(2n) .rightbox{ order: 1; }
 
+.career_box{padding:25px 25px;border:1px solid rgb(28 213 233);position:relative;border-radius:10px;margin-bottom:30px;max-width:720px;}
+.career_box:after{box-shadow:0 0 0 3px rgb(70 196 216 / 38%);box-sizing:content-box;content:"";height:100%;left:-4px;opacity:1;padding:4px;top:-4px;transform:scale(1);transition:transform 0.2s ease 0s, opacity 0.2s ease 0s;pointer-events:none;position:absolute;width:100%;border-radius:10px;}
+.career_box:hover:after{box-shadow:0 0 0 3px #46c4d8;opacity:1;transform:scale(1);border-radius:10px;}
+.career_box h3{color:#003060;font-size:30px;font-weight:500;margin-bottom:15px;}
+.career_box h4{font-size:18px;font-weight:400;color:#20a2bc;}
+.career_box .status_active{display:inline-block;margin-left:8px;color:#05da29;font-weight:600;font-size:16px;}
+.career_box .status_deactive{display:inline-block;margin-left:8px;color:#ff0000;font-weight:600;font-size:16px;}
+.career_box p{color:#000000;font-size:15px;margin-bottom:6px;}
+.career_box p strong{color:#1d3561;font-size:16px;font-weight:600;}
+.career_box .btn{font-size:14px;padding:8px 20px;font-weight:500;margin-top:10px;}
+.career_box .btn:hover{color:#fff;}
+.applynow_area.contact_pageformbox{background:#1ed3e6;background:-webkit-linear-gradient(to top, #0d579e, #1ed3e6);background:linear-gradient(to top, #0d579e, #1ed3e6);min-height:400px;margin-top:0;box-sizing:border-box;padding:24px;border-radius:10px;}
+.applynow_area.contact_pageformbox h5{font-size:30px;margin-bottom:15px;color:#fff;font-weight:700;border-bottom:1px solid rgb(255 255 255 / 30%);padding-bottom:15px;}
+.applynow_area.contact_pageformbox .form-control{height:44px!important;border-color:rgb(255 255 255 / 52%);background-color:rgb(255 255 255 / 14%);color:#fff;border-width:2px;}
+.applynow_area.contact_pageformbox .form-group{margin-bottom:8px;}
+.applynow_area.contact_pageformbox label{font-size:15px;font-weight:400;color:#fff;}
+.applynow_area.contact_pageformbox .btn-primary{margin-top:15px;font-size:16px;}
+.career_box.jobsearchdetails{padding:0;border:none;}
+.career_box.jobsearchdetails:after{display:none;}
+.career_box.jobsearchdetails a.btn.btn-link{font-size:16px;padding:0;color:#1cd5e9!important;font-weight:400;text-decoration:underline;margin-bottom:15px;}
+.career_box.jobsearchdetails p{color:#000000;font-size:15px;margin-bottom:30px;}
 
 
 

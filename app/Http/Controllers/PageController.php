@@ -1094,7 +1094,7 @@ class PageController extends Controller
 	/* Contact Page Post*/
 	public function contactform(Request $request)
 	{
-		$name = $request->name;
+		//$name = $request->name;
 		$email = $request->email;
 		$message = $request->message;
 		//$company = $request->company;
@@ -1105,8 +1105,8 @@ class PageController extends Controller
 		//$remark = $request->remark;
 
 		$rules = array(
-			'name' => 'required',
-			'email' => 'required|string|email|max:191',
+			'fname' => 'required',
+			'email' => 'required',
 			'message' => 'required',
 		);
 
@@ -1121,7 +1121,16 @@ class PageController extends Controller
 			try {
 				$obj = new Forms;
 				$obj->type = 0;
-				$obj->name = $name;
+				//$obj->name = $name;
+				$obj->fname = $request->fname;
+				$obj->lname = $request->lname;
+				$obj->email = $request->email;
+				$obj->phone = $request->phone;
+				$obj->address = $request->address;
+				$obj->zip = $request->zip;
+				$obj->state = $request->state;
+				$obj->city = $request->city;
+				$obj->reason = $request->reason;
 				$obj->email = $request->email;
 				$obj->message = $request->message;
 				
@@ -1130,20 +1139,27 @@ class PageController extends Controller
 			
 			This e-mail was sent from the contact form on ".config('site.title')." website.<br><br>
 			
-			Name: ".$name."<br>
-			Email: ".$email."<br>
-			Message: ".$message."<br>";
+			First Name: ".$request->fname."<br>
+			Last Name: ".$request->lname."<br>
+			Email: ".$request->email."<br>
+			Phone: ".$request->phone."<br>
+			Address: ".$request->address."<br>
+			Zip Code: ".$request->zip."<br>
+			State: ".$request->state."<br>
+			City: ".$request->city."<br>
+			Reason for Contact: ".$request->reason."<br>
+			Message: ".$request->message."<br>";
 
 			$admin_message_content = ['content' => $admin_message];
 
-			Mail::send('mail', $admin_message_content, function ($msg) use ($request) {
+			// Mail::send('mail', $admin_message_content, function ($msg) use ($request) {
 
-				$admin_email = config('site.contact_email');
-				$support_email = config('site.support_email');
+			// 	$admin_email = config('site.contact_email');
+			// 	$support_email = config('site.support_email');
 
-				$msg->to($admin_email)->subject(config('site.title').': Contact Us Form');
-				$msg->from($support_email, $request->name);
-			});
+			// 	$msg->to($admin_email)->subject(config('site.title').': Contact Us Form');
+			// 	$msg->from($support_email, $request->fname);
+			// });
 			return redirect()->back()->with('message', "Thank you for getting in touch!");
 			} catch (\Exception $e) {
 				DB::rollback();
@@ -1153,20 +1169,96 @@ class PageController extends Controller
 	}
 
 	/* Need Support Form on Help Page Post*/
-	public function enquiry(Request $request)
+	public function paymentform(Request $request)
 	{
-		$fname = $request->fname;
-		$lame = $request->lame;
+		//$name = $request->name;
 		$email = $request->email;
-		$phone = $request->phone;
-		$subject = $request->subject;
-		$state = $request->state;
-		$course = $request->course;
 		$message = $request->message;
+		//$company = $request->company;
+		//$phone = $request->phone;
+		//$service = $request->service;
+		//$located = $request->located;
+		//$help = $request->help;
+		//$remark = $request->remark;
 
 		$rules = array(
 			'fname' => 'required',
-			'email' => 'required|string|email|max:191',
+			'email' => 'required',
+			'message' => 'required',
+		);
+
+		$validator = Validator::make($request->all() , $rules);
+
+		if ($validator->fails())
+		{
+			return redirect()->back()->withErrors($validator)->withInput(); 
+		}
+		else
+		{
+			try {
+				$obj = new Forms;
+				$obj->type = 2;
+				//$obj->name = $name;
+				$obj->fname = $request->fname;
+				$obj->lname = $request->lname;
+				$obj->email = $request->email;
+				$obj->phone = $request->phone;
+				//$obj->address = $request->address;
+				//$obj->zip = $request->zip;
+				$obj->state = $request->state;
+				$obj->city = $request->city;
+				//$obj->reason = $request->reason;
+				$obj->message = $request->message;
+				
+				$obj->save();
+			$admin_message = "Dear Admin,<br><br> 
+			
+			This e-mail was sent from the payment form on ".config('site.title')." website.<br><br>
+			
+			First Name: ".$request->fname."<br>
+			Last Name: ".$request->lname."<br>
+			Email: ".$request->email."<br>
+			Phone: ".$request->phone."<br>
+			State: ".$request->state."<br>
+			City: ".$request->city."<br>
+			Message: ".$request->message."<br>";
+
+			$admin_message_content = ['content' => $admin_message];
+
+			Mail::send('mail', $admin_message_content, function ($msg) use ($request) {
+
+				$admin_email = 'wtm.golam@gmail.com';
+				//config('site.contact_email');
+				$support_email ='wtmsend@webtechnomind.in'; 
+				//config('site.support_email');
+
+				$msg->to($admin_email)->subject(config('site.title').': Contact Us Form');
+				$msg->from($support_email, $request->fname);
+			});
+			return redirect()->back()->with('message', "Thank you for getting in touch!");
+			} catch (\Exception $e) {
+				DB::rollback();
+				return Redirect::back()->withErrors(array('errordetailsd' => $e->getMessage()))->withInput($request->all());
+			}
+		}
+	}
+
+/* Need Support Form on Help Page Post*/
+	public function homeform(Request $request)
+	{
+		$name = $request->name;
+		$email = $request->email;
+		$message = $request->message;
+		//$company = $request->company;
+		//$phone = $request->phone;
+		//$service = $request->service;
+		//$located = $request->located;
+		//$help = $request->help;
+		//$remark = $request->remark;
+
+		$rules = array(
+			'name' => 'required',
+			'email' => 'required',
 			//'message' => 'required',
 		);
 
@@ -1179,29 +1271,40 @@ class PageController extends Controller
 		else
 		{
 			try {
+				$obj = new Forms;
+				$obj->type = 1;
+				$obj->name = $name;
+				//$obj->fname = $request->fname;
+				//$obj->lname = $request->lname;
+				$obj->email = $request->email;
+				$obj->phone = $request->phone;
+				//$obj->address = $request->address;
+				//$obj->zip = $request->zip;
+				//$obj->state = $request->state;
+				//$obj->city = $request->city;
+				//$obj->reason = $request->reason;
+				//$obj->email = $request->email;
+				//$obj->message = $request->message;
+				
+				$obj->save();
 			$admin_message = "Dear Admin,<br><br> 
 			
-			This e-mail was sent from the help desk form on ".config('site.title')." website.<br><br>
+			This e-mail was sent from the home page form on ".config('site.title')." website.<br><br>
 			
-			First Name: ".$fname."<br>
-			Last Name: ".$lame."<br>
-			Email: ".$email."<br>
-			Phone: ".$phone."<br>
-			Subject: ".$subject."<br>
-			State: ".$state."<br>
-			Phone: ".$course."<br>
-			Message: ".$message."<br><br>";
+			Name: ".$request->name."<br>
+			Email: ".$request->email."<br>
+			Phone: ".$request->phone."<br>";
 
 			$admin_message_content = ['content' => $admin_message];
 
-			Mail::send('mail', $admin_message_content, function ($msg) use ($request) {
+			// Mail::send('mail', $admin_message_content, function ($msg) use ($request) {
 
-				$admin_email = config('site.contact_email');
-				$support_email = config('site.support_email');
+			// 	$admin_email = config('site.contact_email');
+			// 	$support_email = config('site.support_email');
 
-				$msg->to($admin_email)->subject(config('site.title').': Need Support');
-				$msg->from($support_email, $request->name);
-			});
+			// 	$msg->to($admin_email)->subject(config('site.title').': Contact Us Form');
+			// 	$msg->from($support_email, $request->name);
+			// });
 			return redirect()->back()->with('message', "Thank you for getting in touch!");
 			} catch (\Exception $e) {
 				DB::rollback();
@@ -1210,7 +1313,166 @@ class PageController extends Controller
 		}
 	}
 
+	/* Need Support Form on Help Page Post*/
+	public function careerform(Request $request)
+	{
+		$name = $request->name;
+		$email = $request->email;
+		$message = $request->message;
+		//$company = $request->company;
+		//$phone = $request->phone;
+		//$service = $request->service;
+		//$located = $request->located;
+		//$help = $request->help;
+		//$remark = $request->remark;
 
+		$rules = array(
+			'name' => 'required',
+			'email' => 'required',
+			'phone' => 'required',
+			'resume' => 'required',
+		);
+if($request->hasfile('resume'))
+		{
+			$rules['resume'] = 'mimes:doc,docx,pdf|max:2048';//jpeg,png,jpg,gif,svg,
+		}
+
+		$validator = Validator::make($request->all() , $rules);
+
+		if ($validator->fails())
+		{
+			return redirect()->back()->withErrors($validator)->withInput(); 
+		}
+		else
+		{
+			try {
+				$obj = new Forms;
+				$obj->type = 3;
+				$obj->name = $name;
+				//$obj->fname = $request->fname;
+				//$obj->lname = $request->lname;
+				$obj->email = $request->email;
+				$obj->phone = $request->phone;
+				//$obj->address = $request->address;
+				//$obj->zip = $request->zip;
+				//$obj->state = $request->state;
+				//$obj->city = $request->city;
+				//$obj->reason = $request->reason;
+				//$obj->email = $request->email;
+				//$obj->message = $request->message;
+					$resume1 = '';
+			if($request->hasfile('resume'))
+			{
+				$resume = $request->file('resume');
+				$filename = $resume->getClientOriginalName();
+				$filename = str_replace("&", "and", $filename);
+				$filename = str_replace(" ", "_", $filename);
+				$filename = time().$filename;
+				$resume->move(public_path().'/uploads/', $filename);
+				$resume1 = $filename;
+			}
+				$obj->resume = $resume1;
+				$obj->save();
+				$resume2 = ($resume1 && File::exists(public_path('uploads/'.$resume1))) ? '<a href="'.asset('/uploads/'.$resume1).'" download>Download</a>' : '' ;
+
+			$admin_message = "Dear Admin,<br><br> 
+			
+			This e-mail was sent from the home page form on ".config('site.title')." website.<br><br>
+			
+			Name: ".$request->name."<br>
+			Email: ".$request->email."<br>
+			Phone: ".$request->phone."<br>";
+
+			$admin_message_content = ['content' => $admin_message];
+
+			// Mail::send('mail', $admin_message_content, function ($msg) use ($request) {
+
+			// 	$admin_email = config('site.contact_email');
+			// 	$support_email = config('site.support_email');
+
+			// 	$msg->to($admin_email)->subject(config('site.title').': Contact Us Form');
+			// 	$msg->from($support_email, $request->name);
+			// });
+			return redirect()->back()->with('message', "Thank you for getting in touch!");
+			} catch (\Exception $e) {
+				DB::rollback();
+				return Redirect::back()->withErrors(array('errordetailsd' => $e->getMessage()))->withInput($request->all());
+			}
+		}
+	}
+	
+		public function book_appoinment(Request $request)
+	{
+		$name = $request->name;
+		$email = $request->email;
+		$message = $request->message;
+		//$company = $request->company;
+		//$phone = $request->phone;
+		//$service = $request->service;
+		//$located = $request->located;
+		//$help = $request->help;
+		//$remark = $request->remark;
+
+		$rules = array(
+			'name' => 'required',
+			'email' => 'required',
+			'message' => 'required',
+		);
+
+		$validator = Validator::make($request->all() , $rules);
+
+		if ($validator->fails())
+		{
+			return redirect()->back()->withErrors($validator)->withInput(); 
+		}
+		else
+		{
+			try {
+				$obj = new Forms;
+				$obj->type = 4;
+				$obj->name = $name;
+				//$obj->fname = $request->fname;
+				//$obj->lname = $request->lname;
+				$obj->email = $request->email;
+				$obj->phone = $request->phone;
+				$obj->address = $request->address;
+				//$obj->zip = $request->zip;
+				//$obj->state = $request->state;
+				//$obj->city = $request->city;
+				$obj->book_date = $request->book_date;
+				$obj->book_time = $request->book_time;
+				$obj->message = $request->message;
+				
+				$obj->save();
+			$admin_message = "Dear Admin,<br><br> 
+			
+			This e-mail was sent from the home page form on ".config('site.title')." website.<br><br>
+			
+			Name: ".$request->name."<br>
+			Email: ".$request->email."<br>
+			Phone: ".$request->phone."<br>
+			Location: ".$request->address."<br>
+			Date: ".$request->book_date."<br>
+			Time: ".$request->book_time."<br>
+			Message: ".$request->message."<br><br>";
+
+			$admin_message_content = ['content' => $admin_message];
+
+			// Mail::send('mail', $admin_message_content, function ($msg) use ($request) {
+
+			// 	$admin_email = config('site.contact_email');
+			// 	$support_email = config('site.support_email');
+
+			// 	$msg->to($admin_email)->subject(config('site.title').': Contact Us Form');
+			// 	$msg->from($support_email, $request->name);
+			// });
+			return redirect()->back()->with('message', "Thank you for getting in touch!");
+			} catch (\Exception $e) {
+				DB::rollback();
+				return Redirect::back()->withErrors(array('errordetailsd' => $e->getMessage()))->withInput($request->all());
+			}
+		}
+	}
 	/* Show Page by Slug Get*/
 	public function ShowPage($slug)
 	{
@@ -1220,6 +1482,7 @@ class PageController extends Controller
 
 		$page = Page::where('slug',$slug)->first();
 		$extra_data = array();
+		$extra_data2 = array();
 		//$page2 = Page::where('slug',3)->first();
 		
 		if($page)
@@ -1258,6 +1521,7 @@ class PageController extends Controller
 			}elseif($page->page_template=='3'){
 				return view('frontend.pages.services_offered', compact('page','setting','page_url','page_image', 'extra_data','country'));
 			}elseif($page->page_template=='4'){
+
 				return view('frontend.pages.location', compact('page','setting','page_url','page_image', 'extra_data'));
 			}elseif($page->page_template=='5'){
 				return view('frontend.pages.contact_us', compact('page','setting','page_url','page_image', 'extra_data'));
@@ -1265,6 +1529,18 @@ class PageController extends Controller
 				return view('frontend.pages.employment', compact('page','setting','page_url','page_image', 'extra_data'));
 			}elseif($page->page_template=='7'){
 				return view('frontend.pages.payment', compact('page','setting','page_url','page_image', 'extra_data'));
+			}elseif($page->page_template=='8'){
+				return view('frontend.pages.location_details', compact('page','setting','page_url','page_image', 'extra_data'));
+			}elseif($page->page_template=='9'){
+				return view('frontend.pages.jobs_search', compact('page','setting','page_url','page_image', 'extra_data'));
+			}elseif($page->page_template=='10'){
+				return view('frontend.pages.jobs_search_details', compact('page','setting','page_url','page_image', 'extra_data'));
+			}elseif($page->page_template=='11'){
+				return view('frontend.pages.service_details', compact('page','setting','page_url','page_image', 'extra_data'));
+			}elseif($page->page_template=='12'){
+				return view('frontend.pages.book_appoinment', compact('page','setting','page_url','page_image', 'extra_data'));
+			}elseif($page->page_template=='13'){
+				return view('frontend.pages.sub_begins_page', compact('page','setting','page_url','page_image', 'extra_data'));
 			}else{
 				return view('frontend.pages.pages', compact('page','setting','page_url','page_image', 'extra_data'));
 			}
@@ -1295,11 +1571,292 @@ class PageController extends Controller
 			// return redirect('404');
 		}
 	}
-
+	public function ShowPageService($id)
+	{
+	    $page = Page::where('page_template','3')->first();
+	   
+		$extra_data = array();
+	    $extra_data = PageExtra::where('id',$id)->get();
+	     
+				return view('frontend.pages.service_details', compact('page','extra_data'));
+	}
 	/* Not Found Get*/
 	public function not_found()
 	{
 		return view('errors.404');
 	}
 
+	public function jobpage()
+	{
+		$sorting_array = array();
+
+		$orderby = Request()->orderby;
+		$order = Request()->order;
+
+		if(!$orderby && !$order)
+		{
+			$orderby = 'menu_order';
+			$order = 'asc';
+		}
+
+		$column_array = array('id' => 'Id', 'page_name' => 'Page Name', 'menu_order' => 'Order');
+		$search = Request()->search;
+		$where = "posttype='jobsearch' ";
+
+		if($search)
+		{
+			$where .= " and (";
+			$i=1;
+			foreach($column_array as $key=>$val)
+			{
+				if($i>1)
+				{
+					$where .= " or ";
+				}
+
+				$where .= $key." like '%".$search."%'";
+				$i++;
+			}
+			$where .= ")";
+		}
+
+		$item_display_per_page = config('admin.pagination');
+		$pages = Page::select('pages.*')
+		->whereRaw($where)
+		->orderBy($orderby, $order)
+		->paginate($item_display_per_page);
+
+
+		foreach($column_array as $key => $value)
+		{
+			$sorting_class = 'sorting';
+			$sorting_url_orderby = $key;
+			$sorting_url_order = 'asc';
+
+			if($orderby==$key)
+			{
+				$sorting_class = ( $order=='asc' ? 'sorting_asc' : 'sorting_desc' );
+
+				$sorting_url_order = ( $order=='asc' ? 'desc' : 'asc' );
+			}
+
+			$sorting_url = 'jobsearch?'.($search!="" ? 'search='.$search.'&' : '').'orderby='.$sorting_url_orderby.'&order='.$sorting_url_order;
+
+			$sorting_array[$key] = array('sorting_class' => $sorting_class, 'sorting_url' => $sorting_url);
+		}
+
+		return view('admin.jobsearch.index', compact('pages','column_array','sorting_array','search'));
+	}
+
+	/* Admin Add country page Get*/
+	public function jobpageadd()
+	{
+		$all_pages = Page::get();//where('posttype','country')->
+		return view('admin.jobsearch.add', compact('all_pages'));
+	}
+
+	/* Admin insert country page Post*/
+	public function jobpageinsert(Request $request)
+	{
+		$id = $request->id;
+
+		$rules = array(
+			'page_name' => 'required|string|max:255',
+			'slug' => 'required|string|max:255|unique:pages',
+			// 'display_in' => 'required|integer',
+			// 'parent_id' => 'required|integer',
+		);
+
+		if($request->hasfile('bannerimage'))
+		{
+			$rules['bannerimage'] = 'mimes:jpeg,png,jpg,gif,svg|max:2048';
+		}
+		if($request->hasfile('image2'))
+		{
+			$rules['image2'] = 'mimes:jpeg,png,jpg,gif,svg|max:2048';
+		}
+
+		$validator = Validator::make($request->all() , $rules);
+
+		if ($validator->fails())
+		{
+			return redirect()->back()->withErrors($validator)->withInput($request->all()); 
+		}
+		else
+		{ 
+			try {
+				$slug = $request->slug;
+				$page_name = $request->page_name;
+				$page_title = $request->page_title;
+				$bannertext = $request->bannertext;
+				$body = $request->body;
+				$posttype = $request->posttype;
+				$meta_title = $request->meta_title;
+				$meta_keyword = $request->meta_keyword;
+				$meta_description = $request->meta_description;
+				$parent_id = $request->parent_id>0?$request->parent_id:0;
+				$display_in = $request->display_in>0?$request->display_in:0;
+				$menu_order = $request->menu_order>0?$request->menu_order:0;
+				$menu_link = $request->menu_link>0?$request->menu_link:0;
+				$page_template = $request->page_template>0?$request->page_template:0;
+				$btn_url = $request->btn_url;
+				$btn_text = $request->btn_text;
+				$job_type =  $request->job_type;
+				$location = $request->location;
+
+				$update_array = array('page_name' => $page_name, 'page_title' => $page_title, 'bannertext' => $bannertext, 'body' => $body, 'posttype' => $posttype, 'meta_title' => $meta_title, 'meta_keyword' => $meta_keyword, 'meta_description' => $meta_description, 'display_in' => $display_in, 'menu_order' => $menu_order, 'menu_link' => $menu_link, 'parent_id' => $parent_id, 'schema_code' => $request->schema_code, 'location' => $request->location, 'job_type' => $request->job_type,'page_template'=>$page_template);//
+
+				if($request->hasfile('bannerimage'))
+				{
+					$bannerimage = $request->file('bannerimage');
+					$filename = $bannerimage->getClientOriginalName();
+					$filename = str_replace("&", "and", $filename);
+					$filename = str_replace(" ", "_", $filename);
+					$filename = time().$filename;
+					$bannerimage->move(public_path().'/uploads/', $filename);  
+					$update_array['bannerimage'] = $filename;
+				}
+				if($request->hasfile('image2'))
+				{
+					$image2 = $request->file('image2');
+					$filename = $image2->getClientOriginalName();
+					$filename = str_replace("&", "and", $filename);
+					$filename = str_replace(" ", "_", $filename);
+					$filename = time().$filename;
+					$image2->move(public_path().'/uploads/', $filename);  
+					$update_array['image2'] = $filename;
+				}
+
+				if ($slug) {
+					$update_array['slug'] = $slug;
+				}
+
+				$update_array['page_template'] = $page_template;//dd($update_array);
+				$page_id = DB::table('pages')->insertGetId($update_array);
+				// print_r($page_id);exit();
+
+				//return redirect()->back()->with('success', true);
+				return Redirect::to('admin/jobpage/edit/'.$page_id)->with('admin_msg', 'Jobpage page has been added successfully.');
+				
+			} catch (\Exception $e) {
+				DB::rollback();
+				return Redirect::back()->withErrors(array('errordetailsd' => $e->getMessage()))->withInput($request->all());
+			}
+		}
+	}
+
+	/* Admin Update countrypage Get*/
+	public function jobpageedit($id)
+	{
+		$all_pages = Page::where('id','!=',$id)->get();//where('posttype','countrypage')->
+		$page = Page::where('id',$id)->where('posttype','jobsearch')->get();
+		if ($page->count()<=0)
+		{
+			return redirect()->back(); 
+		}
+		$page_extra = PageExtra::where('page_id',$id)->orderBy('type', 'asc')->orderBy('rank', 'asc')->get();
+
+		return view('admin.jobsearch.edit', compact('page','page_extra','all_pages'));
+	}
+
+	/* Admin Update countrypage Post*/
+	public function jobpageupdate(Request $request)
+	{
+		$id = $request->id;
+		$page_extra = PageExtra::where('page_id',$id)->orderBy('type', 'asc')->get();//where('type', '!=', '1')->
+
+		$slug = $request->slug;
+		$page_name = $request->page_name;
+		$page_title = $request->page_title;
+		$bannertext = $request->bannertext;
+		$body = $request->body;
+		$posttype = $request->posttype;
+		$meta_title = $request->meta_title;
+		$meta_keyword = $request->meta_keyword;
+		$meta_description = $request->meta_description;
+		$parent_id = $request->parent_id>0?$request->parent_id:0;
+		$display_in = $request->display_in>0?$request->display_in:0;
+		$menu_order = $request->menu_order>0?$request->menu_order:0;
+		$menu_link = $request->menu_link>0?$request->menu_link:0;
+		$page_template = $request->page_template>0?$request->page_template:0;
+		$btn_url = $request->btn_url;
+		$btn_text = $request->btn_text;
+
+		$rules = array(
+			'page_name' => 'required|string|max:255',
+			'slug' => 'required|string|max:255|unique:pages,slug,'.$id,
+			//'display_in' => 'required|integer',
+			//'parent_id' => 'required|integer',
+		);
+
+		if($request->hasfile('bannerimage'))
+		{
+			$rules['bannerimage'] = 'mimes:jpeg,png,jpg,gif,svg|max:2048';
+		}
+		if($request->hasfile('image2'))
+		{
+			$rules['image2'] = 'mimes:jpeg,png,jpg,gif,svg|max:2048';
+		}
+
+		$validator = Validator::make($request->all() , $rules);
+
+		if ($validator->fails())
+		{
+			return Redirect::to('admin/jobpage/edit/'.$id)->withErrors($validator) 
+			->withInput(); 
+		}
+		else
+		{
+			$update_array = array('page_name' => $page_name, 'page_title' => $page_title, 'bannertext' => $bannertext, 'body' => $body, 'posttype' => $posttype, 'meta_title' => $meta_title, 'meta_keyword' => $meta_keyword, 'meta_description' => $meta_description, 'display_in' => $display_in, 'menu_order' => $menu_order, 'menu_link' => $menu_link, 'parent_id' => $parent_id, 'schema_code' => $request->schema_code, 'location' => $request->location, 'job_type' => $request->job_type,'page_template'=>$page_template);//
+
+				$update_array['page_template'] = $page_template;
+			if ($slug && $id!='1') {
+				$update_array['slug'] = $slug;
+			}
+
+				if($request->hasfile('bannerimage'))
+				{
+					$page = Page::where('id',$id)->first();
+					if($page->bannerimage!='' && file_exists(public_path().'/uploads/'.$page->bannerimage))
+					{
+						unlink(public_path().'/uploads/'.$page->bannerimage);
+					}
+
+					$bannerimage = $request->file('bannerimage');
+					$filename = $bannerimage->getClientOriginalName();
+					$filename = str_replace("&", "and", $filename);
+					$filename = str_replace(" ", "_", $filename);
+					$filename = time().$filename;
+					$bannerimage->move(public_path().'/uploads/', $filename);  
+					$update_array['bannerimage'] = $filename;
+				}
+				if($request->hasfile('image2'))
+				{
+					$page = Page::where('id',$id)->first();
+					if($page->image2!='' && file_exists(public_path().'/uploads/'.$page->image2))
+					{
+						unlink(public_path().'/uploads/'.$page->image2);
+					}
+
+					$image2 = $request->file('image2');
+					$filename = $image2->getClientOriginalName();
+					$filename = str_replace("&", "and", $filename);
+					$filename = str_replace(" ", "_", $filename);
+					$filename = time().$filename;
+					$image2->move(public_path().'/uploads/', $filename);  
+					$update_array['image2'] = $filename;
+				}
+
+			DB::table('pages')
+			->where('id', $id)
+			->update($update_array);
+
+					$page_id = $id;
+
+			return redirect()->back()->with('success', true);
+
+		}
+
+
+	}
 }

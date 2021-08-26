@@ -31,7 +31,7 @@
   <div class="login-box">
     <div class="login-logo">
       @if( config('site.logo')!='' && File::exists(public_path('uploads/'.config('site.logo'))) )
-      <a href="{{url('/')}}"><img src="{{ asset('/uploads/'.config('site.logo')) }}" class="user-image" alt="User Image" ></a>
+      <a href="{{url('/')}}"><img style="width: 100px;" src="{{ asset('/uploads/'.config('site.logo')) }}" class="user-image" alt="User Image" ></a>
       @else
         <a href="{{url('/')}}"><b>Admin</b>LTE</a>
       @endif

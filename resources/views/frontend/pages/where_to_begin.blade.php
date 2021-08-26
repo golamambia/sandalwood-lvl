@@ -3,7 +3,7 @@
 @foreach($extra_data as $val)
   @if($val->type==1)
 <!------ banner area start -------->
-<div class="subpagr_banner" style="background-image:url({{ asset('frontend') }}/images/subbanner1.jpg);">
+<div class="subpagr_banner" style="background-image:url({{ asset('/uploads/'.$val->image) }});">
   <div class="container">
      @if($val->title)<h1>{!!$val->title!!}</h1>@endif
     
